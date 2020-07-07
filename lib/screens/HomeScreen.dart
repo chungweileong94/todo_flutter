@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_flutter/models/TodoModel.dart';
-
 import 'package:todo_flutter/screens/AddTodoScreen.dart';
 import 'package:todo_flutter/var/string.dart';
+import 'package:todo_flutter/widgets/TodoListView.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -25,23 +25,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Consumer<TodoModel>(builder: (context, value, child) {
         final todoList = value.todoList;
-
-        return ListView.builder(
-          itemCount: todoList.length,
-          itemBuilder: (BuildContext context, index) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(12),
-                child: Text(
-                  todoList[index],
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              Divider(),
-            ],
-          ),
-        );
+        return TodoListView(todoList: todoList);
       }),
     );
   }
