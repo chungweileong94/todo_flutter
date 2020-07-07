@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_flutter/models/TodoModel.dart';
-import 'package:todo_flutter/screens/AddTodoScreen.dart';
 import 'package:todo_flutter/var/string.dart';
+import 'package:todo_flutter/widgets/AddTodoBottomSheet.dart';
 import 'package:todo_flutter/widgets/TodoListView.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,13 +12,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(appName),
+        centerTitle: true,
         actions: <Widget>[
           IconButton(
               icon: const Icon(Icons.add),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(builder: (context) => AddTodoScreen()),
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) => AddTodoBottomSheet(),
                 );
               })
         ],
