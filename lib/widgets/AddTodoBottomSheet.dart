@@ -25,8 +25,12 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
 
   @override
   Widget build(Object context) => Padding(
-        padding: EdgeInsets.only(top: 4),
+        padding: EdgeInsets.only(
+          top: 4,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             AppBar(
               title: const Text(
@@ -67,6 +71,7 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
                 onChanged: _handleOnValueChanged,
               ),
             ),
+            SizedBox(height: 50)
           ],
         ),
       );
