@@ -11,4 +11,9 @@ class TodoModel extends ChangeNotifier {
     _todoList.add(value);
     notifyListeners();
   }
+
+  void remove(int index) {
+    _todoList.removeAt(index);
+    notifyListeners();
+  }
 }
