@@ -29,6 +29,8 @@ ThemeData getTheme(BuildContext context) {
       shape: RoundedRectangleBorder(
         borderRadius: _borderRadius,
       ),
+      textTheme: ButtonTextTheme.primary,
+      padding: EdgeInsets.all(12),
     ),
     bottomSheetTheme: BottomSheetThemeData(
       shape: RoundedRectangleBorder(

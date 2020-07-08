@@ -24,51 +24,64 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
 
   @override
   Widget build(Object context) => SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            AppBar(
-              title: const Text(
-                'Add Todo',
-                style: TextStyle(color: Colors.black),
+        child: Container(
+          padding: EdgeInsets.all(12).add(
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              AppBar(
+                title: const Text(
+                  'Add Todo',
+                  style: TextStyle(color: Colors.black),
+                ),
+                centerTitle: true,
+                iconTheme: IconThemeData(color: Colors.black),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                leading: Container(),
               ),
-              centerTitle: true,
-              iconTheme: IconThemeData(color: Colors.black),
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              leading: Container(),
-              actions: <Widget>[
-                ...(_value.length > 0
-                    ? [
-                        Builder(
-                          builder: (scaffoldContext) => IconButton(
-                            icon: Icon(Icons.done),
-                            onPressed: _value.length > 0
-                                ? () =>
-                                    this._handleOnAddPressed(scaffoldContext)
-                                : null,
-                          ),
-                        )
-                      ]
-                    : []),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12).add(
-                EdgeInsets.only(
+              Container(
+                margin: EdgeInsets.only(
                   top: 16,
-                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                  bottom: 12,
+                ),
+                child: TextFormField(
+                  autofocus: false,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.bubble_chart),
+                    labelText: 'Remind me to...',
+                    floatingLabelBehavior: FloatingLabelBehavior.never,
+                  ),
+                  onChanged: _handleOnValueChanged,
                 ),
               ),
-              child: TextFormField(
-                autofocus: false,
-                decoration: InputDecoration(
-                  labelText: 'Remind me to...',
+              SizedBox(
+                width: double.infinity,
+                child: Builder(
+                  builder: (scaffoldContext) => OutlineButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          child: Icon(Icons.add),
+                          margin: EdgeInsets.only(right: 8),
+                        ),
+                        Text(
+                          'Add',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
+                    onPressed: _value.length > 0
+                        ? () => this._handleOnAddPressed(scaffoldContext)
+                        : null,
+                  ),
                 ),
-                onChanged: _handleOnValueChanged,
-              ),
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       );
 }
