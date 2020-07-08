@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:todo_flutter/models/TodoModel.dart';
-import 'package:todo_flutter/widgets/FloatingCustomActionButton.dart';
 
 class AddTodoBottomSheet extends StatefulWidget {
   @override
@@ -24,11 +23,7 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
   }
 
   @override
-  Widget build(Object context) => Padding(
-        padding: EdgeInsets.only(
-          top: 4,
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
+  Widget build(Object context) => SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -41,10 +36,7 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
               iconTheme: IconThemeData(color: Colors.black),
               backgroundColor: Colors.transparent,
               elevation: 0,
-              leading: IconButton(
-                icon: Icon(Icons.close),
-                onPressed: () => Navigator.pop(context),
-              ),
+              leading: Container(),
               actions: <Widget>[
                 ...(_value.length > 0
                     ? [
@@ -62,7 +54,12 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(12).add(EdgeInsets.only(top: 16)),
+              padding: const EdgeInsets.all(12).add(
+                EdgeInsets.only(
+                  top: 16,
+                  bottom: MediaQuery.of(context).viewInsets.bottom,
+                ),
+              ),
               child: TextFormField(
                 autofocus: false,
                 decoration: InputDecoration(
@@ -71,7 +68,6 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
                 onChanged: _handleOnValueChanged,
               ),
             ),
-            SizedBox(height: 50)
           ],
         ),
       );
