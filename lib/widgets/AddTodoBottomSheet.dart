@@ -18,7 +18,7 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
   }
 
   void _handleOnAddPressed(context) {
-    Provider.of<TodoModel>(context, listen: false).add(_value);
+    Provider.of<TodoModel>(context, listen: false).add(TodoItem(_value));
     Navigator.pop(context);
   }
 
