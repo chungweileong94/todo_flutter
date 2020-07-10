@@ -26,7 +26,8 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
   Widget build(Object context) => SafeArea(
         child: Container(
           padding: EdgeInsets.all(12).add(
-            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom + 8),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -60,20 +61,10 @@ class _AddTodoBottomSheetState extends State<StatefulWidget> {
               SizedBox(
                 width: double.infinity,
                 child: Builder(
-                  builder: (scaffoldContext) => OutlineButton(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Container(
-                          child: Icon(Icons.add),
-                          margin: EdgeInsets.only(right: 8),
-                        ),
-                        Text(
-                          'Add',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
+                  builder: (scaffoldContext) => RaisedButton.icon(
+                    padding: EdgeInsets.symmetric(vertical: 12),
+                    icon: const Icon(Icons.add),
+                    label: const Text('Add', style: TextStyle(fontSize: 16)),
                     onPressed: _value.length > 0
                         ? () => this._handleOnAddPressed(scaffoldContext)
                         : null,

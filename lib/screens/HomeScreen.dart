@@ -13,22 +13,22 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(appName),
         centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (context) => AddTodoBottomSheet(),
-                );
-              })
-        ],
       ),
       body: Consumer<TodoModel>(builder: (context, value, child) {
         final todoList = value.todoList;
         return TodoListView(todoList: todoList);
       }),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(Icons.add),
+        label: const Text('Add'),
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) => AddTodoBottomSheet(),
+          );
+        },
+      ),
     );
   }
 }

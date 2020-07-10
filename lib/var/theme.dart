@@ -11,6 +11,7 @@ ThemeData getTheme(BuildContext context) {
 
   return ThemeData(
     primarySwatch: Colors.deepPurple,
+    accentColor: Colors.deepPurpleAccent,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: textTheme,
     fontFamily: fontFamily,
