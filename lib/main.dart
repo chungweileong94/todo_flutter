@@ -13,6 +13,10 @@ void main() {
     yield LicenseEntryWithLineBreaks(['google_fonts'], license);
   });
 
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+  ));
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => TodoModel(),

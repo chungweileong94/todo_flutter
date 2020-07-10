@@ -12,6 +12,7 @@ ThemeData getTheme(BuildContext context) {
   return ThemeData(
     primarySwatch: Colors.deepPurple,
     accentColor: Colors.deepPurpleAccent,
+    brightness: Brightness.light,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     textTheme: textTheme,
     fontFamily: fontFamily,
@@ -44,6 +45,7 @@ ThemeData getTheme(BuildContext context) {
     appBarTheme: AppBarTheme(
       color: Colors.transparent,
       elevation: 0,
+      brightness: Brightness.light,
       iconTheme: IconThemeData(color: Colors.black),
       textTheme: textTheme.apply(bodyColor: Colors.black),
     ),
